@@ -8,6 +8,7 @@ void printTowers();
 int** genarateRandomTwoSource();
 int getSlayBlock(int *, int);
 int randomTwoSourceHanoiMove(int *, int *, int *);
+int moveTimes = 0;
 
 #include "hanoi.hpp"
 
@@ -22,6 +23,7 @@ int main(int argc, char *argv[]){
             }
         }
     }
+    printf("init\n");
     printTowers();
     randomTwoSourceHanoiMove(sources[0], sources[1], destination);
     printf("finish\n");

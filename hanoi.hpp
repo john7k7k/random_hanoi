@@ -29,6 +29,8 @@ int move(int *_source, int *_destination){
         }
         break;
     }
+    moveTimes++;
+    printf("%d move\n", moveTimes);
     printTowers();
     return 1; //搬運完成
 }
