@@ -2,16 +2,19 @@
 #include <cstdio>
 #include <cstdlib>
 #include <random>
-#include "hanoi.hpp"
-#define PRINT_TOWERS() printTower(sources[0], TOWER_HEIGHT);printTower(sources[1], TOWER_HEIGHT);printTower(destination, TOWER_HEIGHT)
+//#define PRINT_TOWERS() printTower(sources[0], TOWER_HEIGHT);printTower(sources[1], TOWER_HEIGHT);printTower(destination, TOWER_HEIGHT);printf("========\n")
 
+void printTowers();
 int** genarateRandomTwoSource();
 int getSlayBlock(int *, int);
 int randomTwoSourceHanoiMove(int *, int *, int *);
 
+#include "hanoi.hpp"
+
+int **sources = genarateRandomTwoSource();
+int destination[TOWER_HEIGHT] = {0};
+
 int main(int argc, char *argv[]){
-    int **sources = genarateRandomTwoSource();
-    int destination[TOWER_HEIGHT] = {0};
     if(argc > 1){
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < 4; j++){
@@ -19,15 +22,21 @@ int main(int argc, char *argv[]){
             }
         }
     }
-    
-    PRINT_TOWERS();
+    printTowers();
     randomTwoSourceHanoiMove(sources[0], sources[1], destination);
-    printf("moved\n");
-    PRINT_TOWERS();
+    printf("finish\n");
+    printTowers();
     free(sources[0]);
     free(sources[1]);
     free(sources);
     return 0;
+}
+
+void printTowers(){
+    printTower(sources[0], TOWER_HEIGHT);
+    printTower(sources[1], TOWER_HEIGHT);
+    printTower(destination, TOWER_HEIGHT);
+    printf("========\n");
 }
 
 int** genarateRandomTwoSource(){

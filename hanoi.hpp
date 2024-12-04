@@ -29,6 +29,7 @@ int move(int *_source, int *_destination){
         }
         break;
     }
+    printTowers();
     return 1; //搬運完成
 }
 
